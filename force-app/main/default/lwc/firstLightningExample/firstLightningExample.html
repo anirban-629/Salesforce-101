@@ -1,0 +1,67 @@
+<template>
+    <div
+        style="position:relative; background:#ffffff; border-left:5px solid #0070d2; padding:20px 25px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); max-width:500px; margin:20px auto 0 auto; font-family:Segoe UI, sans-serif;">
+        <h2 style="font-size:18px; font-weight:700; color:#1a1a1a; margin-bottom:12px;">🌟 {header} Hello, World!</h2>
+        <p style="font-size:14px; color:#555; line-height:1.6;">
+            This is your first modified Lightning component. You can now start building more UI elements and connect
+            them to your data.
+        </p>
+        <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin:20px auto;">
+            <div if:true={visible}>
+                <button onclick={changeHeader}
+                    style="padding:10px 20px; background-color:#0070d2; color:#fff; font-size:14px; font-weight:600; border:none; border-radius:8px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:background-color 0.3s ease;">
+                    🌐 Change Language
+                </button>
+            </div>
+            <div if:false={visible}>
+                <button onclick={changeHeader}
+                    style="padding:10px 20px; background-color:#010203; color:#fff; font-size:14px; font-weight:600; border:none; border-radius:8px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:background-color 0.3s ease;">
+                    🌐 Change Language
+                </button>
+            </div>
+            <div>
+                <button onclick={changeButtonColor}
+                    style="padding:10px 20px; background-color:#0070d2; color:#fff; font-size:14px; font-weight:600; border:none; border-radius:8px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:background-color 0.3s ease;">
+                    Change Button Color
+                </button>
+            </div>
+        </div>
+        <ul
+            style="list-style:none; padding: 0; margin: 30px auto; max-width: 400px; font-family: 'Segoe UI', sans-serif;">
+            <template for:each={languages1} for:item="lang">
+                <li key={lang.background}
+                    style="background:#f0f8ff; padding:12px 18px; margin-bottom:10px; border-left:5px solid #0070d2; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1); font-size:16px; font-weight:500;">
+                    {lang.text} <span style="float:right; font-size:12px; color:#666;">{lang.language}</span>
+                </li>
+            </template>
+        </ul>
+        <ul
+            style="list-style:none; padding: 0; margin: 30px auto; max-width: 400px; font-family: 'Segoe UI', sans-serif;">
+            <template iterator:it={languages2}>
+                <li key={it.value.background}
+                    style="background:#fac5f5; padding:12px 18px; margin-bottom:10px; border-left:5px solid #f3d0a7; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1); font-size:16px; font-weight:500;">
+                    <template if:true={it.first}>
+                        <span class="font:bold;">
+                            {it.value.text} <span
+                                style="float:right; font-size:12px; color:#666;">{it.value.language}</span>
+                        </span>
+                    </template>
+
+                    <template if:false={it.first}>
+                        <span>
+                            {it.value.text} <span
+                                style="float:right; font-size:12px; color:#666;">{it.value.language}</span>
+                        </span>
+
+                        <template if:true={it.last}>
+                            <span class="font:bold;">
+                                {it.value.text} <span
+                                    style="float:right; font-size:12px; color:#666;">{it.value.language}</span>
+                            </span>
+                        </template>
+                    </template>
+                </li>
+            </template>
+        </ul>
+    </div>
+</template>

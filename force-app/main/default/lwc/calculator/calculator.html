@@ -1,0 +1,26 @@
+<template>
+    <div class="calculator">
+        <lightning-formatted-text class="display" value={displayValue}></lightning-formatted-text>
+        <div class="buttons">
+            <lightning-button class="button clear" label="C" onclick={clearDisplay}></lightning-button>
+            <lightning-button class="button operator" label="/" onclick={appendOperation}></lightning-button>
+            <lightning-button class="button operator" label="*" onclick={appendOperation}></lightning-button>
+            <lightning-button class="button operator" label="-" onclick={appendOperation}></lightning-button>
+
+            <lightning-button class="button" label="7" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button" label="8" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button" label="9" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button operator" label="+" onclick={appendOperation}></lightning-button>
+
+            <lightning-button class="button" label="4" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button" label="5" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button" label="6" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button equal" label="=" onclick={calculate}></lightning-button>
+
+            <lightning-button class="button" label="1" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button" label="2" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button" label="3" onclick={appendNumber}></lightning-button>
+            <lightning-button class="button" label="0" onclick={appendNumber}></lightning-button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,84 @@
+<template>
+    <lightning-card title="Create Contact" icon-name="standard:contact">
+        <div class="slds-p-around_medium">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" class="slds-p-bottom_small">
+                    <lightning-input label="Full Name" name="name" onchange={handleInputChange}
+                        class="slds-m-bottom_xx-small">
+                    </lightning-input>
+                    <div class="error-message" style="color:#d56974;" if:true={nameError}>{nameError}</div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" class="slds-p-bottom_small">
+                    <lightning-input label="Email" type="email" name="email" onchange={handleInputChange}
+                        class="slds-m-bottom_xx-small">
+                    </lightning-input>
+                    <div class="error-message" style="color:#d56974;" if:true={emailError}>{emailError}</div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" class="slds-p-bottom_small">
+                    <lightning-input label="Phone Number" type="tel" name="phone" onchange={handleInputChange}
+                        class="slds-m-bottom_xx-small">
+                    </lightning-input>
+                    <div class="error-message" style="color:#d56974;" if:true={phoneError}>{phoneError}</div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" class="slds-text-align_center slds-p-top_small">
+                    <lightning-button variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+
+    <template if:true={successOnInsert}>
+        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_success slds-m-top_medium"
+            role="alert">
+            <span class="slds-assistive-text">Success</span>
+            <h2>{successOnInsert}</h2>
+        </div>
+    </template>
+
+    <template if:true={errorOnInsert}>
+        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error slds-m-top_medium"
+            role="alert">
+            <span class="slds-assistive-text">Error</span>
+            <h2>{errorOnInsert}</h2>
+        </div>
+    </template>
+
+
+    <template if:true={isSubmitted}>
+        <div class="slds-box slds-m-top_medium slds-p-around_medium" style="background-color: #ffffff;">
+            <h3 class="slds-text-heading_small slds-m-bottom_small">Last Added Contact Details</h3>
+
+            <div class="slds-grid slds-align_absolute-center slds-m-bottom_small">
+                <div class="slds-col slds-size_10-of-12" style="display: flex; justify-content: space-between;">
+                    <label class="slds-form-element__label" style="margin-bottom: 0.25rem;">ID</label>
+                    <div>{recordId}</div>
+                </div>
+            </div>
+            <div class="slds-grid slds-align_absolute-center slds-m-bottom_small">
+                <div class="slds-col slds-size_10-of-12" style="display: flex; justify-content: space-between;">
+                    <label class="slds-form-element__label" style="margin-bottom: 0.25rem;">Name</label>
+                    <div>{contactName}</div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-align_absolute-center slds-m-bottom_small">
+                <div class="slds-col slds-size_10-of-12" style="display: flex; justify-content: space-between;">
+                    <label class="slds-form-element__label" style="margin-bottom: 0.25rem;">Email</label>
+                    <div>{contactEmail}</div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-align_absolute-center slds-m-bottom_small">
+                <div class="slds-col slds-size_10-of-12" style="display: flex; justify-content: space-between;">
+                    <label class="slds-form-element__label" style="margin-bottom: 0.25rem;">Phone</label>
+                    <div>{contactPhone}</div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+</template>
